@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9Digit GM</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0f14;
+      color: white;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #aab2bd;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .card {
+      background: #151b23;
+      border: 1px solid #29313d;
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      border: 1px solid #394352;
+      background: #0b0f14;
+      color: white;
+      font-size: 17px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #1683ff;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #0b0f14;
+      border: 1px solid #394352;
+    }
+
+    .number {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      margin: 12px 0 18px;
+    }
+
+    .copy {
+      background: #29313d;
+    }
+
+    .note {
+      margin-top: 25px;
+      color: #8f99a6;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>9Digit GM</h1>
+
+    <p class="subtitle">
+      Convert Gambian 7-digit phone numbers to the new 9-digit format.
+    </p>
+
+    <div class="card">
+
+      <label for="number">7-digit phone number</label>
+
+      <input
+        type="tel"
+        id="number"
+        placeholder="Example: 1234567"
+        maxlength="7"
+      >
+
+      <label for="network">Select network</label>
+
+      <select id="network">
+        <option value="83">QCell</option>
+        <option value="87">Africell</option>
+        <option value="86">Comium</option>
+      </select>
+
+      <button onclick="convertNumber()">
+        Convert Number
+      </button>
+
+      <div class="result" id="result">
+
+        <div>New 9-digit number:</div>
+
+        <div class="number" id="newNumber"></div>
+
+        <button class="copy" onclick="copyNumber()">
+          Copy Number
+        </button>
+
+      </div>
+
+    </div>
+
+    <p class="note">
+      Prefixes shown are based on the current reported Gambian numbering
+      information. Verify the official PURA numbering plan before production.
+    </p>
+
+  </div>
+
+  <script>
+    function convertNumber() {
+
+      const number = document.getElementById("number").value.trim();
+      const prefix = document.getElementById("network").value;
+
+      if (!/^\d{7}$/.test(number)) {
+        alert("Please enter exactly 7 digits.");
+        return;
+      }
+
+      const converted = prefix + number;
+
+      document.getElementById("newNumber").textContent = converted;
+      document.getElementById("result").style.display = "block";
+    }
+
+    function copyNumber() {
+
+      const number = document.getElementById("newNumber").textContent;
+
+      navigator.clipboard.writeText(number);
+
+      alert("Number copied!");
+    }
+  </script>
+
+</body>
+</html>
