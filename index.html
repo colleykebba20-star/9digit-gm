@@ -15,94 +15,134 @@
       font-family: Arial, sans-serif;
       background: #0b0f14;
       color: white;
-      padding: 24px 16px;
+      padding: 30px 16px;
     }
 
     .container {
-      max-width: 500px;
+      max-width: 760px;
       margin: auto;
     }
 
     h1 {
       text-align: center;
-      font-size: 36px;
-      margin-bottom: 8px;
+      font-size: 48px;
+      margin: 20px 0 15px;
     }
 
     .subtitle {
       text-align: center;
-      color: #aab2bd;
-      margin-bottom: 30px;
+      color: #aab4c3;
+      font-size: 20px;
       line-height: 1.5;
+      margin-bottom: 40px;
     }
 
     .card {
-      background: #151b23;
-      border: 1px solid #29313d;
-      border-radius: 18px;
-      padding: 20px;
+      background: #151c25;
+      border: 1px solid #303b4b;
+      border-radius: 28px;
+      padding: 30px;
     }
 
     label {
       display: block;
-      margin-bottom: 8px;
+      font-size: 20px;
       font-weight: bold;
+      margin-bottom: 12px;
     }
 
     input,
     select {
       width: 100%;
-      padding: 15px;
-      margin-bottom: 18px;
-      border-radius: 10px;
-      border: 1px solid #394352;
+      padding: 20px;
+      font-size: 20px;
+      border-radius: 18px;
+      border: 2px solid #354153;
       background: #0b0f14;
       color: white;
-      font-size: 17px;
+      margin-bottom: 28px;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #2383ff;
     }
 
     button {
       width: 100%;
-      padding: 15px;
+      padding: 20px;
       border: none;
-      border-radius: 10px;
-      background: #1683ff;
+      border-radius: 18px;
+      background: #2383ff;
       color: white;
-      font-size: 17px;
+      font-size: 20px;
       font-weight: bold;
       cursor: pointer;
     }
 
     button:active {
-      transform: scale(0.98);
+      transform: scale(0.99);
     }
 
     .result {
       display: none;
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 12px;
+      margin-top: 28px;
+      padding: 28px;
+      border: 2px solid #354153;
+      border-radius: 22px;
       background: #0b0f14;
-      border: 1px solid #394352;
+      text-align: center;
+    }
+
+    .result-label {
+      font-size: 18px;
+      margin-bottom: 15px;
     }
 
     .number {
-      font-size: 28px;
+      font-size: 36px;
       font-weight: bold;
-      text-align: center;
-      margin: 12px 0 18px;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
     }
 
-    .copy {
-      background: #29313d;
+    .copy-btn {
+      background: #2b3545;
+    }
+
+    .message {
+      display: none;
+      color: #ff6b6b;
+      margin-top: -15px;
+      margin-bottom: 20px;
+      font-size: 16px;
     }
 
     .note {
-      margin-top: 25px;
-      color: #8f99a6;
-      font-size: 13px;
-      line-height: 1.5;
       text-align: center;
+      color: #929dad;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-top: 35px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .number {
+        font-size: 32px;
+      }
     }
   </style>
 </head>
@@ -113,20 +153,25 @@
 
     <h1>9Digit GM</h1>
 
-    <p class="subtitle">
+    <div class="subtitle">
       Convert Gambian 7-digit phone numbers to the new 9-digit format.
-    </p>
+    </div>
 
     <div class="card">
 
-      <label for="number">7-digit phone number</label>
+      <label for="phone">7-digit phone number</label>
 
       <input
         type="tel"
-        id="number"
+        id="phone"
         placeholder="Example: 1234567"
         maxlength="7"
+        inputmode="numeric"
       >
+
+      <div class="message" id="message">
+        Please enter exactly 7 digits.
+      </div>
 
       <label for="network">Select network</label>
 
@@ -142,11 +187,13 @@
 
       <div class="result" id="result">
 
-        <div>New 9-digit number:</div>
+        <div class="result-label">
+          New 9-digit number:
+        </div>
 
         <div class="number" id="newNumber"></div>
 
-        <button class="copy" onclick="copyNumber()">
+        <button class="copy-btn" onclick="copyNumber()">
           Copy Number
         </button>
 
@@ -154,37 +201,43 @@
 
     </div>
 
-    <p class="note">
-      Prefixes shown are based on the current reported Gambian numbering
-      information. Verify the official PURA numbering plan before production.
-    </p>
+    <div class="note">
+      Prefixes shown are based on currently reported Gambian numbering information.
+      Verify the official PURA numbering plan before production.
+    </div>
 
   </div>
 
   <script>
     function convertNumber() {
 
-      const number = document.getElementById("number").value.trim();
+      const phone = document.getElementById("phone").value.trim();
       const prefix = document.getElementById("network").value;
+      const message = document.getElementById("message");
+      const result = document.getElementById("result");
+      const newNumber = document.getElementById("newNumber");
 
-      if (!/^\d{7}$/.test(number)) {
-        alert("Please enter exactly 7 digits.");
+      if (!/^[0-9]{7}$/.test(phone)) {
+        message.style.display = "block";
+        result.style.display = "none";
         return;
       }
 
-      const converted = prefix + number;
+      message.style.display = "none";
 
-      document.getElementById("newNumber").textContent = converted;
-      document.getElementById("result").style.display = "block";
+      const converted = prefix + phone;
+
+      newNumber.textContent = converted;
+      result.style.display = "block";
     }
 
     function copyNumber() {
 
       const number = document.getElementById("newNumber").textContent;
 
-      navigator.clipboard.writeText(number);
-
-      alert("Number copied!");
+      navigator.clipboard.writeText(number).then(function() {
+        alert("Number copied: " + number);
+      });
     }
   </script>
 
