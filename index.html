@@ -1,245 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>9Digit GM</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9Digit GM</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
-      color: white;
-      padding: 30px 16px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0f14;
+  color: white;
+  padding: 30px 16px 60px;
+}
 
-    .container {
-      max-width: 760px;
-      margin: auto;
-    }
+.container {
+  max-width: 760px;
+  margin: auto;
+}
 
-    h1 {
-      text-align: center;
-      font-size: 48px;
-      margin: 20px 0 15px;
-    }
+h1 {
+  text-align: center;
+  font-size: 56px;
+  margin: 20px 0;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #aab4c3;
-      font-size: 20px;
-      line-height: 1.5;
-      margin-bottom: 40px;
-    }
+.subtitle {
+  text-align: center;
+  color: #aab4c3;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 45px;
+}
 
-    .card {
-      background: #151c25;
-      border: 1px solid #303b4b;
-      border-radius: 28px;
-      padding: 30px;
-    }
+.card {
+  background: #151c24;
+  border: 2px solid #283444;
+  border-radius: 30px;
+  padding: 28px;
+  margin-bottom: 30px;
+}
 
-    label {
-      display: block;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
+h2 {
+  font-size: 28px;
+  margin-top: 0;
+}
 
-    input,
-    select {
-      width: 100%;
-      padding: 20px;
-      font-size: 20px;
-      border-radius: 18px;
-      border: 2px solid #354153;
-      background: #0b0f14;
-      color: white;
-      margin-bottom: 28px;
-    }
+label {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 22px 0 10px;
+}
 
-    input:focus,
-    select:focus {
-      outline: none;
-      border-color: #2383ff;
-    }
+input,
+select {
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 18px;
+  border: 2px solid #344154;
+  background: #0b0f14;
+  color: white;
+}
 
-    button {
-      width: 100%;
-      padding: 20px;
-      border: none;
-      border-radius: 18px;
-      background: #2383ff;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button {
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 18px;
+  background: #2188ff;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-    button:active {
-      transform: scale(0.99);
-    }
+button:active {
+  transform: scale(0.98);
+}
 
-    .result {
-      display: none;
-      margin-top: 28px;
-      padding: 28px;
-      border: 2px solid #354153;
-      border-radius: 22px;
-      background: #0b0f14;
-      text-align: center;
-    }
+.result {
+  margin-top: 25px;
+  padding: 25px;
+  border: 2px solid #344154;
+  border-radius: 20px;
+  text-align: center;
+}
 
-    .result-label {
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
+.result-number {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 18px 0;
+  word-break: break-all;
+}
 
-    .number {
-      font-size: 36px;
-      font-weight: bold;
-      margin-bottom: 25px;
-      letter-spacing: 1px;
-    }
+.secondary {
+  background: #293343;
+}
 
-    .copy-btn {
-      background: #2b3545;
-    }
+.message {
+  display: none;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #3a2020;
+  color: #ffb4b4;
+}
 
-    .message {
-      display: none;
-      color: #ff6b6b;
-      margin-top: -15px;
-      margin-bottom: 20px;
-      font-size: 16px;
-    }
+.file-info {
+  margin-top: 15px;
+  color: #aab4c3;
+  line-height: 1.5;
+}
 
-    .note {
-      text-align: center;
-      color: #929dad;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-top: 35px;
-    }
+.preview {
+  display: none;
+  margin-top: 25px;
+}
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 42px;
-      }
+.preview-box {
+  max-height: 300px;
+  overflow-y: auto;
+  background: #0b0f14;
+  border: 2px solid #344154;
+  border-radius: 15px;
+  padding: 15px;
+}
 
-      .subtitle {
-        font-size: 18px;
-      }
+.preview-row {
+  padding: 10px 5px;
+  border-bottom: 1px solid #283444;
+  font-size: 16px;
+  word-break: break-all;
+}
 
-      .card {
-        padding: 24px;
-      }
+.note {
+  text-align: center;
+  color: #8f9aaa;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 30px;
+}
 
-      .number {
-        font-size: 32px;
-      }
-    }
-  </style>
+.small {
+  color: #aab4c3;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 44px;
+  }
+
+  .subtitle {
+    font-size: 19px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .result-number {
+    font-size: 32px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>9Digit GM</h1>
+<h1>9Digit GM</h1>
 
-    <div class="subtitle">
-      Convert Gambian 7-digit phone numbers to the new 9-digit format.
-    </div>
+<div class="subtitle">
+Convert Gambian 7-digit phone numbers to the new 9-digit format.
+</div>
 
-    <div class="card">
+<!-- SINGLE NUMBER -->
+<div class="card">
 
-      <label for="phone">7-digit phone number</label>
+<h2>Single Number</h2>
 
-      <input
-        type="tel"
-        id="phone"
-        placeholder="Example: 1234567"
-        maxlength="7"
-        inputmode="numeric"
-      >
+<label for="phone">7-digit phone number</label>
 
-      <div class="message" id="message">
-        Please enter exactly 7 digits.
-      </div>
+<input
+  id="phone"
+  type="tel"
+  inputmode="numeric"
+  maxlength="7"
+  placeholder="Example: 1234567"
+>
 
-      <label for="network">Select network</label>
+<label for="network">Select network</label>
 
-      <select id="network">
-        <option value="83">QCell</option>
-        <option value="87">Africell</option>
-        <option value="86">Comium</option>
-      </select>
+<select id="network">
+  <option value="83">QCell</option>
+  <option value="87">Africell</option>
+  <option value="86">Comium</option>
+</select>
 
-      <button onclick="convertNumber()">
-        Convert Number
-      </button>
+<button onclick="convertNumber()">Convert Number</button>
 
-      <div class="result" id="result">
+<div id="singleMessage" class="message"></div>
 
-        <div class="result-label">
-          New 9-digit number:
-        </div>
+<div id="singleResult" class="result" style="display:none;">
 
-        <div class="number" id="newNumber"></div>
+<div>New 9-digit number:</div>
 
-        <button class="copy-btn" onclick="copyNumber()">
-          Copy Number
-        </button>
+<div id="newNumber" class="result-number"></div>
 
-      </div>
+<button class="secondary" onclick="copyNumber()">
+Copy Number
+</button>
 
-    </div>
+</div>
 
-    <div class="note">
-      Prefixes shown are based on currently reported Gambian numbering information.
-      Verify the official PURA numbering plan before production.
-    </div>
+</div>
 
-  </div>
+<!-- BULK CONTACTS -->
+<div class="card">
 
-  <script>
-    function convertNumber() {
+<h2>Bulk Contacts</h2>
 
-      const phone = document.getElementById("phone").value.trim();
-      const prefix = document.getElementById("network").value;
-      const message = document.getElementById("message");
-      const result = document.getElementById("result");
-      const newNumber = document.getElementById("newNumber");
+<p class="small">
+Convert multiple Gambian contacts at once using a CSV or VCF contact file.
+</p>
 
-      if (!/^[0-9]{7}$/.test(phone)) {
-        message.style.display = "block";
-        result.style.display = "none";
-        return;
+<label for="fileInput">Choose contact file</label>
+
+<input
+  id="fileInput"
+  type="file"
+  accept=".csv,.vcf"
+  onchange="loadFile()"
+>
+
+<div id="fileInfo" class="file-info"></div>
+
+<div id="bulkMessage" class="message"></div>
+
+<div id="preview" class="preview">
+
+<h3>Preview</h3>
+
+<div id="previewBox" class="preview-box"></div>
+
+<button onclick="downloadFile()">
+Download Converted Contacts
+</button>
+
+</div>
+
+</div>
+
+<div class="note">
+Prefixes currently used:
+QCell 83 · Africell 87 · Comium 86.
+<br><br>
+Verify the official PURA numbering plan before production.
+</div>
+
+</div>
+
+<script>
+
+let convertedContent = "";
+let convertedFileName = "";
+
+const prefixes = {
+  "83": "QCell",
+  "87": "Africell",
+  "86": "Comium"
+};
+
+function showMessage(id, text) {
+  const box = document.getElementById(id);
+  box.textContent = text;
+  box.style.display = "block";
+}
+
+function hideMessage(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+function convertNumber() {
+
+  const phone = document.getElementById("phone").value.trim();
+  const prefix = document.getElementById("network").value;
+
+  hideMessage("singleMessage");
+
+  if (!/^[0-9]{7}$/.test(phone)) {
+    showMessage(
+      "singleMessage",
+      "Please enter exactly 7 digits."
+    );
+
+    document.getElementById("singleResult").style.display = "none";
+    return;
+  }
+
+  const converted = prefix + phone;
+
+  document.getElementById("newNumber").textContent = converted;
+  document.getElementById("singleResult").style.display = "block";
+}
+
+function copyNumber() {
+
+  const number = document.getElementById("newNumber").textContent;
+
+  navigator.clipboard.writeText(number)
+    .then(() => {
+      alert("Number copied: " + number);
+    })
+    .catch(() => {
+      alert("Copy failed. Please copy the number manually.");
+    });
+}
+
+function convertGambianNumber(number) {
+
+  let cleaned = number.replace(/\D/g, "");
+
+  if (cleaned.length === 7) {
+    return "83" + cleaned;
+  }
+
+  if (cleaned.length === 9 &&
+      (cleaned.startsWith("83") ||
+       cleaned.startsWith("87") ||
+       cleaned.startsWith("86"))) {
+    return cleaned;
+  }
+
+  return number;
+}
+
+function loadFile() {
+
+  const file = document.getElementById("fileInput").files[0];
+
+  if (!file) {
+    return;
+  }
+
+  hideMessage("bulkMessage");
+
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+
+    const content = event.target.result;
+
+    document.getElementById("fileInfo").textContent =
+      "File selected: " + file.name;
+
+    if (file.name.toLowerCase().endsWith(".vcf")) {
+      convertVCF(content, file.name);
+    } else {
+      convertCSV(content, file.name);
+    }
+  };
+
+  reader.readAsText(file);
+}
+
+function convertCSV(content, fileName) {
+
+  const lines = content.split(/\r?\n/);
+
+  let output = [];
+  let preview = [];
+
+  lines.forEach((line, index) => {
+
+    if (!line.trim()) {
+      output.push(line);
+      return;
+    }
+
+    const parts = line.split(",");
+
+    const convertedParts = parts.map(part => {
+
+      const match = part.match(/(?:^|\D)(\d{7})(?:\D|$)/);
+
+      if (match) {
+
+        const converted = "83" + match[1];
+
+        preview.push(
+          match[1] + " → " + converted
+        );
+
+        return part.replace(
+          match[1],
+          converted
+        );
       }
 
-      message.style.display = "none";
+      return part;
+    });
 
-      const converted = prefix + phone;
+    output.push(convertedParts.join(","));
+  });
 
-      newNumber.textContent = converted;
-      result.style.display = "block";
+  convertedContent = output.join("\n");
+
+  convertedFileName =
+    fileName.replace(/\.csv$/i, "") +
+    "-converted.csv";
+
+  showPreview(preview);
+}
+
+function convertVCF(content, fileName) {
+
+  let preview = [];
+
+  const converted = content.replace(
+    /(\+220\s*)?(\d{7})/g,
+    function(match, countryCode, number) {
+
+      const newNumber = "83" + number;
+
+      preview.push(
+        number + " → " + newNumber
+      );
+
+      if (countryCode) {
+        return "+220 " + newNumber;
+      }
+
+      return newNumber;
     }
+  );
 
-    function copyNumber() {
+  convertedContent = converted;
 
-      const number = document.getElementById("newNumber").textContent;
+  convertedFileName =
+    fileName.replace(/\.vcf$/i, "") +
+    "-converted.vcf";
 
-      navigator.clipboard.writeText(number).then(function() {
-        alert("Number copied: " + number);
-      });
-    }
-  </script>
+  showPreview(preview);
+}
+
+function showPreview(items) {
+
+  const previewBox =
+    document.getElementById("previewBox");
+
+  previewBox.innerHTML = "";
+
+  if (items.length === 0) {
+
+    showMessage(
+      "bulkMessage",
+      "No 7-digit Gambian numbers were detected."
+    );
+
+    document.getElementById("preview").style.display =
+      "none";
+
+    return;
+  }
+
+  const limited = items.slice(0, 50);
+
+  limited.forEach(item => {
+
+    const row = document.createElement("div");
+
+    row.className = "preview-row";
+    row.textContent = item;
+
+    previewBox.appendChild(row);
+  });
+
+  if (items.length > 50) {
+
+    const more = document.createElement("div");
+
+    more.className = "preview-row";
+
+    more.textContent =
+      "...and " + (items.length - 50) +
+      " more numbers.";
+
+    previewBox.appendChild(more);
+  }
+
+  document.getElementById("preview").style.display =
+    "block";
+}
+
+function downloadFile() {
+
+  if (!convertedContent) {
+    return;
+  }
+
+  const blob = new Blob(
+    [convertedContent],
+    { type: "text/plain;charset=utf-8" }
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = convertedFileName;
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  document.body.removeChild(link);
+
+  URL.revokeObjectURL(url);
+}
+
+</script>
 
 </body>
 </html>
