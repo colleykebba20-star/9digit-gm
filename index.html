@@ -25,8 +25,8 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 56px;
-  margin: 20px 0;
+  font-size: 58px;
+  margin: 20px 0 12px;
 }
 
 .subtitle {
@@ -34,140 +34,207 @@ h1 {
   color: #aab4c3;
   font-size: 22px;
   line-height: 1.5;
-  margin-bottom: 45px;
+  margin: 0 auto 45px;
 }
 
 .card {
   background: #151c24;
-  border: 2px solid #283444;
+  border: 2px solid #2b394c;
   border-radius: 30px;
-  padding: 28px;
+  padding: 32px;
   margin-bottom: 30px;
 }
 
 h2 {
-  font-size: 28px;
-  margin-top: 0;
+  font-size: 40px;
+  margin: 0 0 25px;
+}
+
+h3 {
+  font-size: 25px;
+  margin: 28px 0 12px;
 }
 
 label {
   display: block;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  margin: 22px 0 10px;
+  margin: 22px 0 12px;
 }
 
-input,
+input[type="text"],
 select {
   width: 100%;
-  padding: 20px;
-  font-size: 20px;
-  border-radius: 18px;
-  border: 2px solid #344154;
-  background: #0b0f14;
+  padding: 22px;
+  font-size: 22px;
   color: white;
+  background: #0b0f14;
+  border: 3px solid #34445c;
+  border-radius: 22px;
+  outline: none;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #2585f5;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 22px;
+  font-size: 18px;
+  color: white;
+  background: #0b0f14;
+  border: 3px solid #34445c;
+  border-radius: 22px;
 }
 
 button {
   width: 100%;
-  padding: 20px;
-  margin-top: 20px;
-  border: 0;
-  border-radius: 18px;
-  background: #2188ff;
+  border: none;
+  border-radius: 22px;
+  padding: 22px;
+  margin-top: 22px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #2585f5;
   color: white;
-  font-size: 20px;
-  font-weight: bold;
 }
 
-button:active {
-  transform: scale(0.98);
-}
-
-.result {
-  margin-top: 25px;
-  padding: 25px;
-  border: 2px solid #344154;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.result-number {
-  font-size: 38px;
-  font-weight: bold;
-  margin: 18px 0;
-  word-break: break-all;
+button:hover {
+  opacity: 0.9;
 }
 
 .secondary {
-  background: #293343;
+  background: #293444;
 }
 
-.message {
+.success {
+  background: #173d2b;
+  border: 2px solid #2e8b57;
+}
+
+.result {
   display: none;
-  margin-top: 15px;
-  padding: 15px;
-  border-radius: 12px;
-  background: #3a2020;
-  color: #ffb4b4;
-}
-
-.file-info {
-  margin-top: 15px;
-  color: #aab4c3;
-  line-height: 1.5;
-}
-
-.preview {
-  display: none;
-  margin-top: 25px;
-}
-
-.preview-box {
-  max-height: 300px;
-  overflow-y: auto;
+  margin-top: 28px;
+  padding: 28px;
   background: #0b0f14;
-  border: 2px solid #344154;
-  border-radius: 15px;
-  padding: 15px;
+  border: 2px solid #34445c;
+  border-radius: 24px;
+  text-align: center;
 }
 
-.preview-row {
-  padding: 10px 5px;
-  border-bottom: 1px solid #283444;
-  font-size: 16px;
+.result-label {
+  font-size: 20px;
+  color: #b5bfce;
+}
+
+.number {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 20px 0;
   word-break: break-all;
 }
 
-.note {
-  text-align: center;
-  color: #8f9aaa;
-  font-size: 16px;
-  line-height: 1.6;
-  margin-top: 30px;
+.error {
+  display: none;
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #4a2020;
+  color: #ffb4b4;
+  font-size: 18px;
 }
 
-.small {
+.info {
   color: #aab4c3;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.bulk-result {
+  display: none;
+  margin-top: 28px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.stat {
+  background: #0b0f14;
+  border: 2px solid #34445c;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 28px;
+}
+
+.stat span {
+  color: #aab4c3;
+}
+
+.preview {
+  max-height: 400px;
+  overflow: auto;
+  border: 2px solid #34445c;
+  border-radius: 18px;
+}
+
+.preview-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 15px;
+  border-bottom: 1px solid #293444;
+  font-size: 17px;
+}
+
+.preview-row:last-child {
+  border-bottom: none;
+}
+
+.preview-header {
+  font-weight: bold;
+  background: #1c2530;
+}
+
+.footer {
+  text-align: center;
+  color: #8f9bad;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin-top: 40px;
 }
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 44px;
+    font-size: 48px;
   }
 
   .subtitle {
-    font-size: 19px;
+    font-size: 20px;
   }
 
   .card {
-    padding: 22px;
+    padding: 25px 20px;
+    border-radius: 25px;
   }
 
-  .result-number {
-    font-size: 32px;
+  h2 {
+    font-size: 34px;
+  }
+
+  .number {
+    font-size: 34px;
   }
 }
 </style>
@@ -179,11 +246,13 @@ button:active {
 
 <h1>9Digit GM</h1>
 
-<div class="subtitle">
+<p class="subtitle">
 Convert Gambian 7-digit phone numbers to the new 9-digit format.
-</div>
+</p>
+
 
 <!-- SINGLE NUMBER -->
+
 <div class="card">
 
 <h2>Single Number</h2>
@@ -191,8 +260,8 @@ Convert Gambian 7-digit phone numbers to the new 9-digit format.
 <label for="phone">7-digit phone number</label>
 
 <input
+  type="text"
   id="phone"
-  type="tel"
   inputmode="numeric"
   maxlength="7"
   placeholder="Example: 1234567"
@@ -206,15 +275,21 @@ Convert Gambian 7-digit phone numbers to the new 9-digit format.
   <option value="86">Comium</option>
 </select>
 
-<button onclick="convertNumber()">Convert Number</button>
+<button onclick="convertNumber()">
+Convert Number
+</button>
 
-<div id="singleMessage" class="message"></div>
+<div id="singleError" class="error">
+Please enter exactly 7 digits.
+</div>
 
-<div id="singleResult" class="result" style="display:none;">
+<div id="singleResult" class="result">
 
-<div>New 9-digit number:</div>
+<div class="result-label">
+New 9-digit number:
+</div>
 
-<div id="newNumber" class="result-number"></div>
+<div id="newNumber" class="number"></div>
 
 <button class="secondary" onclick="copyNumber()">
 Copy Number
@@ -224,94 +299,136 @@ Copy Number
 
 </div>
 
+
 <!-- BULK CONTACTS -->
+
 <div class="card">
 
 <h2>Bulk Contacts</h2>
 
-<p class="small">
+<p class="info">
 Convert multiple Gambian contacts at once using a CSV or VCF contact file.
 </p>
 
-<label for="fileInput">Choose contact file</label>
+<label for="bulkNetwork">
+Select network
+</label>
+
+<select id="bulkNetwork">
+  <option value="83">QCell</option>
+  <option value="87">Africell</option>
+  <option value="86">Comium</option>
+</select>
+
+<label for="contactFile">
+Choose contact file
+</label>
 
 <input
-  id="fileInput"
   type="file"
-  accept=".csv,.vcf"
-  onchange="loadFile()"
+  id="contactFile"
+  accept=".csv,.vcf,text/csv,text/vcard"
 >
 
-<div id="fileInfo" class="file-info"></div>
+<div id="bulkError" class="error"></div>
 
-<div id="bulkMessage" class="message"></div>
+<button onclick="convertContacts()">
+Convert Contacts
+</button>
 
-<div id="preview" class="preview">
+<div id="bulkResult" class="bulk-result">
+
+<div class="stats">
+
+<div class="stat">
+<strong id="totalCount">0</strong>
+<span>Total</span>
+</div>
+
+<div class="stat">
+<strong id="convertedCount">0</strong>
+<span>Converted</span>
+</div>
+
+</div>
 
 <h3>Preview</h3>
 
-<div id="previewBox" class="preview-box"></div>
+<div id="preview" class="preview"></div>
 
-<button onclick="downloadFile()">
-Download Converted Contacts
+<button onclick="downloadConverted()">
+Download Converted File
 </button>
 
 </div>
 
 </div>
 
-<div class="note">
-Prefixes currently used:
-QCell 83 · Africell 87 · Comium 86.
-<br><br>
+
+<div class="footer">
+
+<p>
+Prefixes currently used: QCell 83 · Africell 87 · Comium 86.
+</p>
+
+<p>
+Your contact file is processed directly in your browser during this prototype.
+It is not uploaded to a server.
+</p>
+
+<p>
 Verify the official PURA numbering plan before production.
+</p>
+
 </div>
 
 </div>
+
 
 <script>
 
-let convertedContent = "";
-let convertedFileName = "";
-
-const prefixes = {
+const NETWORKS = {
   "83": "QCell",
   "87": "Africell",
   "86": "Comium"
 };
 
-function showMessage(id, text) {
-  const box = document.getElementById(id);
-  box.textContent = text;
-  box.style.display = "block";
-}
+let convertedData = "";
+let convertedFileType = "csv";
 
-function hideMessage(id) {
-  document.getElementById(id).style.display = "none";
-}
+
+/* SINGLE NUMBER */
 
 function convertNumber() {
 
-  const phone = document.getElementById("phone").value.trim();
-  const prefix = document.getElementById("network").value;
+  const phoneInput = document.getElementById("phone");
+  const network = document.getElementById("network").value;
 
-  hideMessage("singleMessage");
+  const phone = phoneInput.value.replace(/\D/g, "");
+
+  const error = document.getElementById("singleError");
+  const result = document.getElementById("singleResult");
+  const newNumber = document.getElementById("newNumber");
 
   if (!/^[0-9]{7}$/.test(phone)) {
-    showMessage(
-      "singleMessage",
-      "Please enter exactly 7 digits."
-    );
 
-    document.getElementById("singleResult").style.display = "none";
+    error.style.display = "block";
+    result.style.display = "none";
+
     return;
   }
 
-  const converted = prefix + phone;
+  error.style.display = "none";
 
-  document.getElementById("newNumber").textContent = converted;
-  document.getElementById("singleResult").style.display = "block";
+  const converted = network + phone;
+
+  newNumber.textContent = converted;
+
+  result.style.display = "block";
 }
+
+
+/* COPY SINGLE NUMBER */
 
 function copyNumber() {
 
@@ -322,37 +439,46 @@ function copyNumber() {
       alert("Number copied: " + number);
     })
     .catch(() => {
-      alert("Copy failed. Please copy the number manually.");
+      alert("Could not copy the number.");
     });
 }
 
-function convertGambianNumber(number) {
 
-  let cleaned = number.replace(/\D/g, "");
+/* BULK CONTACTS */
 
-  if (cleaned.length === 7) {
-    return "83" + cleaned;
-  }
+function convertContacts() {
 
-  if (cleaned.length === 9 &&
-      (cleaned.startsWith("83") ||
-       cleaned.startsWith("87") ||
-       cleaned.startsWith("86"))) {
-    return cleaned;
-  }
+  const fileInput = document.getElementById("contactFile");
+  const network = document.getElementById("bulkNetwork").value;
 
-  return number;
-}
+  const error = document.getElementById("bulkError");
+  const result = document.getElementById("bulkResult");
 
-function loadFile() {
+  if (!fileInput.files.length) {
 
-  const file = document.getElementById("fileInput").files[0];
+    error.textContent = "Please choose a CSV or VCF contact file.";
+    error.style.display = "block";
+    result.style.display = "none";
 
-  if (!file) {
     return;
   }
 
-  hideMessage("bulkMessage");
+  const file = fileInput.files[0];
+
+  const fileName = file.name.toLowerCase();
+
+  if (!fileName.endsWith(".csv") && !fileName.endsWith(".vcf")) {
+
+    error.textContent = "Only CSV and VCF files are supported.";
+    error.style.display = "block";
+    result.style.display = "none";
+
+    return;
+  }
+
+  error.style.display = "none";
+
+  convertedFileType = fileName.endsWith(".vcf") ? "vcf" : "csv";
 
   const reader = new FileReader();
 
@@ -360,165 +486,447 @@ function loadFile() {
 
     const content = event.target.result;
 
-    document.getElementById("fileInfo").textContent =
-      "File selected: " + file.name;
+    if (convertedFileType === "csv") {
 
-    if (file.name.toLowerCase().endsWith(".vcf")) {
-      convertVCF(content, file.name);
+      processCSV(content, network);
+
     } else {
-      convertCSV(content, file.name);
+
+      processVCF(content, network);
+
     }
+
+  };
+
+  reader.onerror = function() {
+
+    error.textContent = "Could not read the contact file.";
+    error.style.display = "block";
+
   };
 
   reader.readAsText(file);
 }
 
-function convertCSV(content, fileName) {
+
+/* FIND 7-DIGIT GAMBIAN NUMBERS */
+
+function convertPhone(phone, prefix) {
+
+  if (!phone) {
+    return phone;
+  }
+
+  let cleaned = phone.replace(/[^\d]/g, "");
+
+  if (cleaned.length === 7) {
+    return prefix + cleaned;
+  }
+
+  if (cleaned.length === 9 &&
+      (
+        cleaned.startsWith("83") ||
+        cleaned.startsWith("87") ||
+        cleaned.startsWith("86")
+      )
+  ) {
+    return cleaned;
+  }
+
+  return phone;
+}
+
+
+/* CSV PROCESSING */
+
+function processCSV(content, prefix) {
 
   const lines = content.split(/\r?\n/);
 
-  let output = [];
-  let preview = [];
+  const rows = [];
 
-  lines.forEach((line, index) => {
+  let converted = 0;
 
-    if (!line.trim()) {
-      output.push(line);
-      return;
+  let total = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+
+    if (!lines[i].trim()) {
+      continue;
     }
 
-    const parts = line.split(",");
+    const cells = parseCSVLine(lines[i]);
 
-    const convertedParts = parts.map(part => {
+    const newCells = [];
 
-      const match = part.match(/(?:^|\D)(\d{7})(?:\D|$)/);
+    let rowConverted = false;
 
-      if (match) {
+    for (let j = 0; j < cells.length; j++) {
 
-        const converted = "83" + match[1];
+      const original = cells[j];
 
-        preview.push(
-          match[1] + " → " + converted
+      const phoneMatch = original.match(/\d{7}/);
+
+      if (phoneMatch) {
+
+        const newPhone = convertPhone(
+          phoneMatch[0],
+          prefix
         );
 
-        return part.replace(
-          match[1],
-          converted
+        if (newPhone !== original) {
+          rowConverted = true;
+        }
+
+        newCells.push(
+          original.replace(
+            phoneMatch[0],
+            newPhone
+          )
         );
+
+      } else {
+
+        newCells.push(original);
+
       }
 
-      return part;
-    });
+    }
 
-    output.push(convertedParts.join(","));
-  });
+    if (i > 0) {
+      total++;
+    }
 
-  convertedContent = output.join("\n");
+    if (rowConverted) {
+      converted++;
+    }
 
-  convertedFileName =
-    fileName.replace(/\.csv$/i, "") +
-    "-converted.csv";
+    rows.push(newCells);
+  }
 
-  showPreview(preview);
+  convertedData = rows
+    .map(row =>
+      row.map(cell =>
+        '"' +
+        cell.replace(/"/g, '""') +
+        '"'
+      ).join(",")
+    )
+    .join("\n");
+
+  showBulkResults(total, converted, rows);
+
 }
 
-function convertVCF(content, fileName) {
 
-  let preview = [];
+/* SIMPLE CSV PARSER */
 
-  const converted = content.replace(
-    /(\+220\s*)?(\d{7})/g,
-    function(match, countryCode, number) {
+function parseCSVLine(line) {
 
-      const newNumber = "83" + number;
+  const result = [];
 
-      preview.push(
-        number + " → " + newNumber
-      );
+  let current = "";
 
-      if (countryCode) {
-        return "+220 " + newNumber;
+  let insideQuotes = false;
+
+  for (let i = 0; i < line.length; i++) {
+
+    const char = line[i];
+
+    if (char === '"') {
+
+      if (
+        insideQuotes &&
+        line[i + 1] === '"'
+      ) {
+
+        current += '"';
+        i++;
+
+      } else {
+
+        insideQuotes = !insideQuotes;
+
       }
 
-      return newNumber;
+    } else if (
+      char === "," &&
+      !insideQuotes
+    ) {
+
+      result.push(current);
+      current = "";
+
+    } else {
+
+      current += char;
+
     }
+
+  }
+
+  result.push(current);
+
+  return result;
+}
+
+
+/* VCF PROCESSING */
+
+function processVCF(content, prefix) {
+
+  let converted = 0;
+
+  let total = 0;
+
+  const contacts = content.split(
+    /(?=BEGIN:VCARD)/g
   );
 
-  convertedContent = converted;
+  const previewRows = [];
 
-  convertedFileName =
-    fileName.replace(/\.vcf$/i, "") +
-    "-converted.vcf";
+  const convertedContacts = [];
 
-  showPreview(preview);
-}
+  for (let contact of contacts) {
 
-function showPreview(items) {
+    if (!contact.includes("BEGIN:VCARD")) {
+      continue;
+    }
 
-  const previewBox =
-    document.getElementById("previewBox");
+    total++;
 
-  previewBox.innerHTML = "";
+    let changed = false;
 
-  if (items.length === 0) {
+    const updated = contact.replace(
+      /(TEL[^:]*:)([+0-9 ()-]+)/gi,
+      function(match, label, number) {
 
-    showMessage(
-      "bulkMessage",
-      "No 7-digit Gambian numbers were detected."
+        const digits = number.replace(
+          /[^\d]/g,
+          ""
+        );
+
+        if (digits.length === 7) {
+
+          const newNumber =
+            prefix + digits;
+
+          changed = true;
+
+          return label + newNumber;
+        }
+
+        return match;
+      }
     );
 
-    document.getElementById("preview").style.display =
-      "none";
+    if (changed) {
+      converted++;
+    }
 
-    return;
+    convertedContacts.push(updated);
+
+    const nameMatch =
+      updated.match(/FN[^:]*:(.*)/i);
+
+    const telMatch =
+      updated.match(/TEL[^:]*:([+0-9 ()-]+)/i);
+
+    previewRows.push({
+      name: nameMatch
+        ? nameMatch[1]
+        : "Unknown contact",
+
+      phone: telMatch
+        ? telMatch[1].trim()
+        : "No number"
+    });
+
   }
 
-  const limited = items.slice(0, 50);
+  convertedData =
+    convertedContacts.join("\n");
 
-  limited.forEach(item => {
-
-    const row = document.createElement("div");
-
-    row.className = "preview-row";
-    row.textContent = item;
-
-    previewBox.appendChild(row);
-  });
-
-  if (items.length > 50) {
-
-    const more = document.createElement("div");
-
-    more.className = "preview-row";
-
-    more.textContent =
-      "...and " + (items.length - 50) +
-      " more numbers.";
-
-    previewBox.appendChild(more);
-  }
-
-  document.getElementById("preview").style.display =
-    "block";
-}
-
-function downloadFile() {
-
-  if (!convertedContent) {
-    return;
-  }
-
-  const blob = new Blob(
-    [convertedContent],
-    { type: "text/plain;charset=utf-8" }
+  showBulkResults(
+    total,
+    converted,
+    previewRows
   );
 
-  const url = URL.createObjectURL(blob);
+}
 
-  const link = document.createElement("a");
+
+/* SHOW RESULTS */
+
+function showBulkResults(
+  total,
+  converted,
+  rows
+) {
+
+  document.getElementById(
+    "totalCount"
+  ).textContent = total;
+
+  document.getElementById(
+    "convertedCount"
+  ).textContent = converted;
+
+  const preview =
+    document.getElementById("preview");
+
+  preview.innerHTML = "";
+
+  const header =
+    document.createElement("div");
+
+  header.className =
+    "preview-row preview-header";
+
+  header.innerHTML =
+    "<div>Contact</div><div>Phone</div>";
+
+  preview.appendChild(header);
+
+
+  if (convertedFileType === "csv") {
+
+    const maxRows =
+      Math.min(rows.length, 30);
+
+    for (
+      let i = 1;
+      i < maxRows;
+      i++
+    ) {
+
+      const row = rows[i];
+
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "preview-row";
+
+      div.innerHTML =
+        "<div>" +
+        escapeHTML(row[0] || "Contact") +
+        "</div>" +
+        "<div>" +
+        escapeHTML(
+          findPhoneInRow(row)
+        ) +
+        "</div>";
+
+      preview.appendChild(div);
+    }
+
+  } else {
+
+    const maxRows =
+      Math.min(rows.length, 30);
+
+    for (
+      let i = 0;
+      i < maxRows;
+      i++
+    ) {
+
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "preview-row";
+
+      div.innerHTML =
+        "<div>" +
+        escapeHTML(rows[i].name) +
+        "</div>" +
+        "<div>" +
+        escapeHTML(rows[i].phone) +
+        "</div>";
+
+      preview.appendChild(div);
+    }
+
+  }
+
+  document.getElementById(
+    "bulkResult"
+  ).style.display = "block";
+}
+
+
+/* FIND PHONE IN CSV ROW */
+
+function findPhoneInRow(row) {
+
+  for (const cell of row) {
+
+    const match =
+      cell.match(/\d{9}/);
+
+    if (match) {
+      return match[0];
+    }
+
+  }
+
+  return "Converted";
+}
+
+
+/* PROTECT PREVIEW HTML */
+
+function escapeHTML(text) {
+
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+/* DOWNLOAD */
+
+function downloadConverted() {
+
+  if (!convertedData) {
+
+    alert("Nothing to download.");
+
+    return;
+  }
+
+  const extension =
+    convertedFileType === "vcf"
+      ? "vcf"
+      : "csv";
+
+  const mime =
+    convertedFileType === "vcf"
+      ? "text/vcard"
+      : "text/csv";
+
+  const blob =
+    new Blob(
+      [convertedData],
+      { type: mime }
+    );
+
+  const url =
+    URL.createObjectURL(blob);
+
+  const link =
+    document.createElement("a");
 
   link.href = url;
-  link.download = convertedFileName;
+
+  link.download =
+    "9digit-gm-converted." +
+    extension;
 
   document.body.appendChild(link);
 
